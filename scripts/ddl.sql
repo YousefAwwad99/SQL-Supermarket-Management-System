@@ -109,3 +109,13 @@ CREATE TABLE products
 	p_price INT CHECK (p_price > 0),
 	p_category NVARCHAR(50) NOT NULL
 ) 
+
+
+ALTER TABLE customers
+ADD CONSTRAINT unique_phoneNumber UNIQUE (c_phone_number)
+
+ALTER TABLE Inventory
+ADD CONSTRAINT fk_product_inv FOREIGN KEY (p_id) REFERENCES products (p_id)
+
+ALTER TABLE orders
+ADD CONSTRAINT checking_sales CHECK (total_sales >= 0)
